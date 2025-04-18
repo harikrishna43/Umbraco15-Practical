@@ -1,0 +1,14 @@
+{
+  "id": "Umbraco15.ContentModels",
+  "name": "Umbraco15.ContentModels",
+  "version": "0.0.0",
+  "allowPackageTelemetry": true,
+  "extensions": [
+    {
+      "name": "Umbraco 15Content Models Bundle",
+      "alias": "Umbraco15.ContentModels.Bundle",
+      "type": "bundle",
+      "js": "/App_Plugins/Umbraco15ContentModels/umbraco-15-content-models.js"
+    }
+  ]
+}

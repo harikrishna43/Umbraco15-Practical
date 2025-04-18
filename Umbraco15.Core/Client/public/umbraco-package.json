@@ -1,0 +1,14 @@
+{
+  "id": "Umbraco15.Core",
+  "name": "Umbraco15.Core",
+  "version": "0.0.0",
+  "allowPackageTelemetry": true,
+  "extensions": [
+    {
+      "name": "Umbraco 15Core Bundle",
+      "alias": "Umbraco15.Core.Bundle",
+      "type": "bundle",
+      "js": "/App_Plugins/Umbraco15Core/umbraco-15-core.js"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco15.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco15.Core.Models.NewsLandingPageViewModel>
+@{
+    Layout = "Master.cshtml";
+
+    var items = Model.NewsItems;
+
+    var years = Model.Children().Select(x => x.Value<DateTime>("publishDate")).GroupBy(x=>x.Year);
+
+    var Months = years;
+}
+<!--================Blog Area =================-->
+<section class="blog_area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="blog_left_sidebar">
+                    <div class="row">
+                        @{
+                            var children = Model.NewsItems;
+                            if (children is not null && children.Any())
+                            {
+                                foreach (NewsArticle newspage in children)
+                                {
+
+                                    <div class="col-lg-6">
+                                        <article class="blog_item">
+                                            <div class="blog_item_img">
+                                                <img class="card-img rounded-0" src="@newspage.FeaturedImage.GetCropUrl(width:370,height:185)" alt="@newspage.Name">
+                                                <div class="blog_item_date">
+                                                    <h3>@newspage.PublishDate.Day</h3>
+                                                    <p>@(newspage.PublishDate.ToString("MMM"))</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="blog_details">
+                                                <a class="d-inline-block" href="@newspage.Url()">
+                                                    <h2>@Html.Raw(newspage.PageTitle)</h2>
+                                                </a>
+                                                <ul class="blog-info-link">
+                                                    <li><i class="fa fa-user"></i> @newspage.Author</li>
+                                                </ul>
+                                            </div>
+                                            
+                                        </article>
+                                    </div>
+                                }
+                            }
+                        }
+                    </div>
+                    
+                    @await Html.PartialAsync("Partials/News/_Pagination", Model)
+                </div>
+            </div>
+            @await Html.PartialAsync("Partials/News/_Sidebar", Model)
+</section>
+<!--================Blog Area =================-->

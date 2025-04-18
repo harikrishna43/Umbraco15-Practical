@@ -1,0 +1,33 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco15.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<NewsArticle>
+@{
+	Layout = "Master.cshtml";
+}
+<main>
+    <!-- About US Start -->
+    <div class="about-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <!-- Trending Tittle -->
+                    <div class="about-right mb-90">
+                        <div class="about-img">
+                            <img src="@Model.FeaturedImage.Url()" alt="@Model.PageTitle">
+                        </div>
+                        <div class="section-tittle mb-30 pt-30">
+                            <h3>@Html.Raw(Model.PageTitle)</h3>
+                            <ul class="blog-info-link">
+                                <li><i class="fa fa-user"></i> @Model.Author</li>
+                            </ul>
+                        </div>
+                        <div class="about-prea">
+                            @Html.Raw(Model.Content)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About US End -->
+</main>
